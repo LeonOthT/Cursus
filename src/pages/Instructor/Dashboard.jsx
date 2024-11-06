@@ -178,7 +178,7 @@ function Dashboard() {
                   <h3 className="text-lg font-medium">The Complete JavaScript Course 2020: Build Real Projects!</h3>
                   <span className="bg-red-500 text-white text-xs px-2 py-1 rounded-full inline-block mt-2 mb-2">Pending</span>
                   <p className="text-gray-500 text-sm mb-2">Submitted 1 days ago</p>
-                  <button className="text-red-500 hover:underline">Delete</button>
+                  <button className="text-black-500 hover:underline">Delete</button>
                 </div>
               </div>
 
