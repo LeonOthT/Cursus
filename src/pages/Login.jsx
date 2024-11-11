@@ -1,27 +1,21 @@
-// src/pages/Login.js
 import React, { useState } from 'react';
-import { useAuth } from '../context/AuthContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../store/authSlice';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
-  const { login } = useAuth();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { error, loading } = useSelector((state) => state.auth);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-
-    // Hardcoded accounts
-    const accounts = {
-      Instructor1: { password: '123456', role: 'instructor' },
-      Student1: { password: '123456', role: 'student' },
-    };
-
-    // Check if the account exists and password matches
-    if (accounts[email] && accounts[email].password === password) {
-      login(accounts[email].role); // Set role and navigate
-    } else {
-      setError('Invalid email or password');
+    const resultAction = await dispatch(login({ email, password }));
+    
+    if (login.fulfilled.match(resultAction)) {
+      navigate(`/${resultAction.payload.role}/dashboard`); // Navigate based on role
     }
   };
 
@@ -64,7 +58,13 @@ function Login() {
             </label>
             <a href="#" className="text-sm text-red-500 hover:underline">Forgot Password?</a>
           </div>
-          <button type="submit" className="w-full bg-red-500 text-white py-2 rounded-lg font-semibold hover:bg-red-600">Sign In</button>
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-red-500 text-white py-2 rounded-lg font-semibold hover:bg-red-600"
+          >
+            {loading ? 'Signing In...' : 'Sign In'}
+          </button>
         </form>
 
         {/* Sign up link */}
