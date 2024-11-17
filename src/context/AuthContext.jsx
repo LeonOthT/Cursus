@@ -17,13 +17,12 @@ export const AuthProvider = ({ children }) => {
     try {
       const response = await fetch('https://66938e63c6be000fa07c14dd.mockapi.io/trieuOTHse173617');
       const users = await response.json();
-
       const user = users.find((u) => u.email === email && u.password === password);
-
+  
       if (user) {
-        dispatch(loginSuccess(user.role)); // Update Redux store
-        localStorage.setItem('role', user.role); // Persist role in local storage
-        navigate('/dashboard');
+        dispatch(loginSuccess(user.role)); // Save user role in Redux
+        localStorage.setItem('role', user.role); // Persist role
+        navigate('/homepage'); // Navigate to homepage after login
       } else {
         setError('Invalid email or password');
       }
