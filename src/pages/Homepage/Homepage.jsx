@@ -20,7 +20,7 @@ function Homepage() {
     <div className="homepage flex p-8">
       {/* Main Content */}
       <div className="flex-grow pr-8">
-        <h1 className="text-3xl font-bold mb-4">Live Streams</h1>
+        <h1 className="text-2xl font-bold text-gray-800 mb-6 flex justify-between items-center">Live Streams</h1>
         <div className="grid grid-cols-6 gap-4 mb-8">
           {/* Live stream thumbnails */}
           {['John Doe', 'Jessica', 'Edututs+', 'Joginder Singh', 'Zoena', 'Albert Dua'].map((name, index) => (
@@ -36,7 +36,7 @@ function Homepage() {
           ))}
         </div>
 
-        <h2 className="text-3xl font-bold mb-4">Featured Courses</h2>
+        <h2 className="text-2xl font-bold text-gray-800 mb-6 flex justify-between items-center">Featured Courses</h2>
         <div className="grid grid-cols-3 gap-6">
           {/* Featured course cards */}
           {[
@@ -109,7 +109,7 @@ function Homepage() {
           ))}
         </div>
 
-        <h2 className="mt-7 text-3xl font-bold mb-4">Newest Courses</h2>
+        <h2 className="text-2xl font-bold text-gray-800 mb-6 flex justify-between items-center mt-5">Newest Courses</h2>
         <div className="grid grid-cols-3 gap-6 mb-8">
           {/* Newest Course Cards */}
           {[
