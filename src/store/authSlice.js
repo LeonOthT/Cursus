@@ -19,6 +19,11 @@ export const authSlice = createSlice({
   },
 });
 
+const initialState = {
+  role: localStorage.getItem('role') || null,
+  isAuthenticated: !!localStorage.getItem('role'),
+};
+
 export const { loginSuccess, logout } = authSlice.actions;
 
 export default authSlice.reducer;

@@ -2,9 +2,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { FaTh, FaFileAlt } from 'react-icons/fa';
+import useRole from '../components/useRole';
 
 function Dashboard() {
-  const role = useSelector((state) => state.auth.role); // Retrieve the role from Redux
+  const role = useRole();
+
 
   return (
     <div className="flex-grow bg-gray-100 min-h-screen">

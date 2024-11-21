@@ -23,17 +23,25 @@ function Homepage() {
         <h1 className="text-2xl font-bold text-gray-800 mb-6 flex justify-between items-center">Live Streams</h1>
         <div className="grid grid-cols-6 gap-4 mb-8">
           {/* Live stream thumbnails */}
-          {['John Doe', 'Jessica', 'Edututs+', 'Joginder Singh', 'Zoena', 'Albert Dua'].map((name, index) => (
+          {[
+            { name: "John Doe", avatar: "https://media.istockphoto.com/id/1299037952/vi/vec-to/bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-t%C3%A0i-kho%E1%BA%A3n-ng%C6%B0%E1%BB%9Di-d%C3%B9ng.jpg?s=1024x1024&w=is&k=20&c=YsQJH1bABPEExvmSz8b-TAD8vEKa967G7KZN1cuXsFw=" },
+            { name: "Jessica", avatar: "https://media.istockphoto.com/id/970441006/vi/vec-to/bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-avatar-nam-%C4%91%E1%BA%A7y-m%C3%A0u-s%E1%BA%AFc-v%E1%BB%9Bi-k%C3%ADnh-m%E1%BA%B7t-tr%E1%BB%9Di-tr%C3%AAn-m%E1%BA%AFt.jpg?s=1024x1024&w=is&k=20&c=vDvyhVise4YPMIS-yWnl_NqTregyDXi-wzGdLJm1Crs=" },
+            { name: "Edututs+", avatar: "https://media.istockphoto.com/id/1191084604/vi/vec-to/avatar-nam-tr%C3%AAn-n%E1%BB%81n-tr%E1%BA%AFng-bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-ng%C6%B0%E1%BB%9Di-d%C3%B9ng-h%C3%ACnh-minh-h%E1%BB%8Da-vector.jpg?s=1024x1024&w=is&k=20&c=QMs_4d4tVWm0nnMvBt3iSFphDPFVajJ5KaFTnMxfnAM=" },
+            { name: "Joginder Singh", avatar: "https://media.istockphoto.com/id/1191084605/vi/vec-to/avatar-nam-tr%C3%AAn-n%E1%BB%81n-tr%E1%BA%AFng-bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-ng%C6%B0%E1%BB%9Di-d%C3%B9ng-h%C3%ACnh-minh-h%E1%BB%8Da-vector.jpg?s=1024x1024&w=is&k=20&c=Iz168WmG4ZWSJ_1zOYrOYVESPS3QiR_JsXcmtl-OGzQ=" },
+            { name: "Zoena", avatar: "https://media.istockphoto.com/id/1020538890/vi/vec-to/d%E1%BA%A5u-hi%E1%BB%87u-vector-bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-hipster-v%C3%A0-bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-%C4%91%C6%B0%E1%BB%A3c-c%C3%A1ch-ly-tr%C3%AAn-n%E1%BB%81n-tr%E1%BA%AFng-kh%C3%A1i-ni%E1%BB%87m-bi%E1%BB%83u.jpg?s=1024x1024&w=is&k=20&c=ymq-EDjVNnEsz06E2rbzq2yUUulKjWhViplgHrRDKKE=" },
+            { name: "Albert Dua", avatar: "https://media.istockphoto.com/id/1170110277/vi/vec-to/bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-avatar-t%C3%A0i-kho%E1%BA%A3n-ng%C6%B0%E1%BB%9Di-d%C3%B9ng-ph%C6%B0%C6%A1ng-ti%E1%BB%87n-truy%E1%BB%81n-th%C3%B4ng-x%C3%A3-h%E1%BB%99i.jpg?s=1024x1024&w=is&k=20&c=DLHtyWvn5atIOatzkYrK3_bXeBaEtg33rv2M5kCk0us=" }
+          ].map((person, index) => (
             <div key={index} className="flex flex-col items-center bg-gray-100 rounded-lg p-4">
               <img
-                src={`https://randomuser.me/api/portraits/lego/${index}.jpg`}
-                alt={`${name} live`}
+                src={person.avatar}
+                alt={`${person.name} live`}
                 className="w-20 h-20 rounded-full"
               />
-              <span className="mt-2 text-center font-semibold">{name}</span>
+              <span className="mt-2 text-center font-semibold">{person.name}</span>
               <span className="text-xs text-red-500">live</span>
             </div>
           ))}
+
         </div>
 
         <h2 className="text-2xl font-bold text-gray-800 mb-6 flex justify-between items-center">Featured Courses</h2>
@@ -322,50 +330,50 @@ function Homepage() {
         </div>
 
         <div className="container mx-auto px-6 py-12">
-  <h2 className="text-2xl font-bold text-gray-800 mb-6">What Our Students Have Today</h2>
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    {[
-      {
-        name: "Jessica William",
-        avatar: "https://media.istockphoto.com/id/1211405105/vi/vec-to/nh%C3%A0-thi%E1%BA%BFt-k%E1%BA%BF-avatar-flat-icon-y%E1%BA%BFu-t%E1%BB%91-thi%E1%BA%BFt-k%E1%BA%BF-bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-minh-h%E1%BB%8Da-vector-ph%E1%BA%B3ng.jpg?s=1024x1024&w=is&k=20&c=2dLRIjrKkvIR3bInktAGedZSgGx_tQbic1_o7vn0Gg0=",
-        feedback:
-          "Donec ac ex eu arcu euismod feugiat. In venenatis bibendum nisi, in placerat eros ultricies vitae. Praesent pellentesque blandit scelerisque. Suspendisse potenti.",
-      },
-      {
-        name: "Rock Smith",
-        avatar: "https://media.istockphoto.com/id/1439811828/vi/vec-to/bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-avatar.jpg?s=1024x1024&w=is&k=20&c=JDKfMt1Ne39ILUgcqbU4TDUvd4TFX2Z8v6smSoUxMok=",
-        feedback:
-          "Cras id enim lectus. Fusce at arcu tincidunt, iaculis libero quis, vulputate mauris. Morbi facilisis vitae ligula id aliquam. Nunc consectetur malesuada bibendum.",
-      },
-      {
-        name: "Luoci Marchant",
-        avatar: "https://media.istockphoto.com/id/1192881925/vi/vec-to/di%E1%BB%85n-vi%C3%AAn.jpg?s=1024x1024&w=is&k=20&c=vC5QD9qfmf8CRPtLYY2gwwJyuU6coFW6HlG9aJ0YBL8=",
-        feedback:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos eros ac, sagittis orci.",
-      },
-    ].map((testimonial, index) => (
-      <div
-        key={index}
-        className="bg-white p-6 rounded-lg shadow-md flex flex-col justify-between"
-      >
-        {/* Feedback */}
-        <p className="text-gray-600 mb-6 before:content-['\201C'] after:content-['\201D']">
-          {testimonial.feedback}
-        </p>
+          <h2 className="text-2xl font-bold text-gray-800 mb-6">What Our Students Have Today</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                name: "Jessica William",
+                avatar: "https://media.istockphoto.com/id/1211405105/vi/vec-to/nh%C3%A0-thi%E1%BA%BFt-k%E1%BA%BF-avatar-flat-icon-y%E1%BA%BFu-t%E1%BB%91-thi%E1%BA%BFt-k%E1%BA%BF-bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-minh-h%E1%BB%8Da-vector-ph%E1%BA%B3ng.jpg?s=1024x1024&w=is&k=20&c=2dLRIjrKkvIR3bInktAGedZSgGx_tQbic1_o7vn0Gg0=",
+                feedback:
+                  "Donec ac ex eu arcu euismod feugiat. In venenatis bibendum nisi, in placerat eros ultricies vitae. Praesent pellentesque blandit scelerisque. Suspendisse potenti.",
+              },
+              {
+                name: "Rock Smith",
+                avatar: "https://media.istockphoto.com/id/1439811828/vi/vec-to/bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-avatar.jpg?s=1024x1024&w=is&k=20&c=JDKfMt1Ne39ILUgcqbU4TDUvd4TFX2Z8v6smSoUxMok=",
+                feedback:
+                  "Cras id enim lectus. Fusce at arcu tincidunt, iaculis libero quis, vulputate mauris. Morbi facilisis vitae ligula id aliquam. Nunc consectetur malesuada bibendum.",
+              },
+              {
+                name: "Luoci Marchant",
+                avatar: "https://media.istockphoto.com/id/1192881925/vi/vec-to/di%E1%BB%85n-vi%C3%AAn.jpg?s=1024x1024&w=is&k=20&c=vC5QD9qfmf8CRPtLYY2gwwJyuU6coFW6HlG9aJ0YBL8=",
+                feedback:
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos eros ac, sagittis orci.",
+              },
+            ].map((testimonial, index) => (
+              <div
+                key={index}
+                className="bg-white p-6 rounded-lg shadow-md flex flex-col justify-between"
+              >
+                {/* Feedback */}
+                <p className="text-gray-600 mb-6 before:content-['\201C'] after:content-['\201D']">
+                  {testimonial.feedback}
+                </p>
 
-        {/* Avatar and Name */}
-        <div className="flex items-center">
-          <img
-            src={testimonial.avatar}
-            alt={`${testimonial.name} avatar`}
-            className="w-12 h-12 rounded-full mr-4"
-          />
-          <h3 className="text-gray-800 font-semibold">{testimonial.name}</h3>
+                {/* Avatar and Name */}
+                <div className="flex items-center">
+                  <img
+                    src={testimonial.avatar}
+                    alt={`${testimonial.name} avatar`}
+                    className="w-12 h-12 rounded-full mr-4"
+                  />
+                  <h3 className="text-gray-800 font-semibold">{testimonial.name}</h3>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    ))}
-  </div>
-</div>
 
 
 
@@ -387,29 +395,29 @@ function Homepage() {
           />
 
           {/* Name and Title */}
-    <div className="flex items-center mb-2">
-      <h3 className="text-xl font-semibold text-gray-800">Joginder Singh</h3>
-      <span className="ml-2 text-blue-500">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <circle cx="12" cy="12" r="10" strokeWidth="2" />
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M9 12l2 2 4-4"
-          />
-        </svg>
-      </span>
-    </div>
-    <p className="text-gray-600 text-sm text-center">
-      Web Developer, Designer, and Teacher
-    </p>
+          <div className="flex items-center mb-2">
+            <h3 className="text-xl font-semibold text-gray-800">Joginder Singh</h3>
+            <span className="ml-2 text-blue-500">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <circle cx="12" cy="12" r="10" strokeWidth="2" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M9 12l2 2 4-4"
+                />
+              </svg>
+            </span>
+          </div>
+          <p className="text-gray-600 text-sm text-center">
+            Web Developer, Designer, and Teacher
+          </p>
 
           {/* Social Icons */}
           <div className="flex space-x-4 mt-4">

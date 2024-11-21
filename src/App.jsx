@@ -8,6 +8,8 @@ import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
 import TopNav from './components/TopNav';
 import LiveStreams from './pages/Homepage/LiveStreams';
+import InstructorCourses from './pages/Instructor/Courses';
+import StudentPurchasedCourses from './pages/Student/PurchasedCourses';
 
 function MainLayout({ children, sidebar }) {
   return (
@@ -38,8 +40,8 @@ function App() {
         }
       />
 
-       {/* Homepage with its own sidebar */}
-       <Route
+      {/* Homepage with its own sidebar */}
+      <Route
         path="/live-streams"
         element={
           <MainLayout sidebar={<HomepageSidebar />}>
@@ -57,6 +59,24 @@ function App() {
           </MainLayout>
         }
       />
+
+      <Route
+        path="/instructor/courses"
+        element={
+          <MainLayout sidebar={<Sidebar role="instructor" />}>
+            <InstructorCourses />
+          </MainLayout>
+        }
+      />
+      <Route
+        path="/student/purchased-courses"
+        element={
+          <MainLayout sidebar={<Sidebar role="student" />}>
+            <StudentPurchasedCourses />
+          </MainLayout>
+        }
+      />
+
 
       {/* Default Redirect */}
       <Route path="*" element={<Login />} />
