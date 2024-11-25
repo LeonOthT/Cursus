@@ -96,7 +96,7 @@ const InstructorCourses = () => {
       return <p>Loading...</p>;
     }
 
-   
+
 
     switch (activeTab) {
       case "myCourses":
@@ -235,27 +235,163 @@ const InstructorCourses = () => {
             </tbody>
           </table>
         );
-       
-      
-        case "myPurchases":
-          return (
+
+
+      case "myPurchases":
+        return (
+          <table className="min-w-full border-collapse bg-white rounded-lg shadow">
+            <thead className="bg-red-50 text-gray-700">
+              <tr>
+                <th className="text-left p-4 border-b">Item No.</th>
+                <th className="text-left p-4 border-b">Title</th>
+                <th className="text-left p-4 border-b">Vendor</th>
+                <th className="text-left p-4 border-b">Category</th>
+                <th className="text-left p-4 border-b">Delivery Type</th>
+                <th className="text-left p-4 border-b">Price</th>
+                <th className="text-left p-4 border-b">Purchase Date</th>
+                <th className="text-left p-4 border-b">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {courses.map((purchase) => (
+                <tr key={purchase.id} className="hover:bg-gray-50">
+                  {editCourseId === purchase.id ? (
+                    <>
+                      <td className="p-4 border-b">
+                        <input
+                          type="text"
+                          value={editCourseData.no}
+                          onChange={(e) =>
+                            setEditCourseData({ ...editCourseData, no: e.target.value })
+                          }
+                          className="w-16 px-2 py-1 border rounded text-center text-sm"
+                        />
+                      </td>
+                      <td className="p-4 border-b">
+                        <input
+                          type="text"
+                          value={editCourseData.title}
+                          onChange={(e) =>
+                            setEditCourseData({ ...editCourseData, title: e.target.value })
+                          }
+                          className="w-36 px-2 py-1 border rounded text-center text-sm"
+                        />
+                      </td>
+                      <td className="p-4 border-b">
+                        <input
+                          type="text"
+                          value={editCourseData.vendor}
+                          onChange={(e) =>
+                            setEditCourseData({ ...editCourseData, vendor: e.target.value })
+                          }
+                          className="w-32 px-2 py-1 border rounded text-center text-sm"
+                        />
+                      </td>
+                      <td className="p-4 border-b">
+                        <input
+                          type="text"
+                          value={editCourseData.category}
+                          onChange={(e) =>
+                            setEditCourseData({ ...editCourseData, category: e.target.value })
+                          }
+                          className="w-36 px-2 py-1 border rounded text-center text-sm"
+                        />
+                      </td>
+                      <td className="p-4 border-b">
+                        <input
+                          type="text"
+                          value={editCourseData.deliveryType}
+                          onChange={(e) =>
+                            setEditCourseData({ ...editCourseData, deliveryType: e.target.value })
+                          }
+                          className="w-32 px-2 py-1 border rounded text-center text-sm"
+                        />
+                      </td>
+                      <td className="p-4 border-b">
+                        <input
+                          type="number"
+                          value={editCourseData.price}
+                          onChange={(e) =>
+                            setEditCourseData({ ...editCourseData, price: e.target.value })
+                          }
+                          className="w-16 px-2 py-1 border rounded text-center text-sm"
+                        />
+                      </td>
+                      <td className="p-4 border-b">
+                        <input
+                          type="text"
+                          value={editCourseData.purchaseDate}
+                          onChange={(e) =>
+                            setEditCourseData({ ...editCourseData, purchaseDate: e.target.value })
+                          }
+                          className="w-36 px-2 py-1 border rounded text-center text-sm"
+                        />
+                      </td>
+                      <td className="p-4 border-b flex items-center space-x-2">
+                        <button
+                          className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                          onClick={saveEdit}
+                        >
+                          Save
+                        </button>
+                        <button
+                          className="p-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400"
+                          onClick={() => setEditCourseId(null)}
+                        >
+                          Cancel
+                        </button>
+                      </td>
+                    </>
+                  ) : (
+                    <>
+                      <td className="p-4 border-b">{purchase.no}</td>
+                      <td className="p-4 border-b">{purchase.title}</td>
+                      <td className="p-4 border-b">{purchase.vendor}</td>
+                      <td className="p-4 border-b">{purchase.category}</td>
+                      <td className="p-4 border-b">{purchase.deliveryType}</td>
+                      <td className="p-4 border-b">{purchase.price}</td>
+                      <td className="p-4 border-b">{purchase.purchaseDate}</td>
+                      <td className="p-4 border-b flex items-center space-x-2">
+                        <button
+                          className="p-2 rounded-full hover:bg-gray-100"
+                          onClick={() => handleEdit(purchase)}
+                        >
+                          <FaEdit className="text-gray-500 hover:text-blue-500" />
+                        </button>
+                        <button
+                          className="p-2 rounded-full hover:bg-gray-100"
+                          onClick={() => handleDelete(purchase.id)}
+                        >
+                          <FaTrashAlt className="text-gray-500 hover:text-red-500" />
+                        </button>
+                      </td>
+                    </>
+                  )}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        );
+      case "upcomingCourses":
+        return (
+          <div className="overflow-x-auto">
             <table className="min-w-full border-collapse bg-white rounded-lg shadow">
               <thead className="bg-red-50 text-gray-700">
                 <tr>
                   <th className="text-left p-4 border-b">Item No.</th>
                   <th className="text-left p-4 border-b">Title</th>
-                  <th className="text-left p-4 border-b">Vendor</th>
+                  <th className="text-left p-4 border-b">Thumbnail</th>
                   <th className="text-left p-4 border-b">Category</th>
-                  <th className="text-left p-4 border-b">Delivery Type</th>
                   <th className="text-left p-4 border-b">Price</th>
-                  <th className="text-left p-4 border-b">Purchase Date</th>
+                  <th className="text-left p-4 border-b">Date</th>
+                  <th className="text-left p-4 border-b">Status</th>
                   <th className="text-left p-4 border-b">Actions</th>
                 </tr>
               </thead>
               <tbody>
-                {courses.map((purchase) => (
-                  <tr key={purchase.id} className="hover:bg-gray-50">
-                    {editCourseId === purchase.id ? (
+                {courses.map((upcoming) => (
+                  <tr key={upcoming.id} className="hover:bg-gray-50">
+                    {editCourseId === upcoming.id ? (
                       <>
                         <td className="p-4 border-b">
                           <input
@@ -280,11 +416,11 @@ const InstructorCourses = () => {
                         <td className="p-4 border-b">
                           <input
                             type="text"
-                            value={editCourseData.vendor}
+                            value={editCourseData.thumbnail}
                             onChange={(e) =>
-                              setEditCourseData({ ...editCourseData, vendor: e.target.value })
+                              setEditCourseData({ ...editCourseData, thumbnail: e.target.value })
                             }
-                            className="w-32 px-2 py-1 border rounded text-center text-sm"
+                            className="w-16 px-2 py-1 border rounded text-center text-sm"
                           />
                         </td>
                         <td className="p-4 border-b">
@@ -295,16 +431,6 @@ const InstructorCourses = () => {
                               setEditCourseData({ ...editCourseData, category: e.target.value })
                             }
                             className="w-36 px-2 py-1 border rounded text-center text-sm"
-                          />
-                        </td>
-                        <td className="p-4 border-b">
-                          <input
-                            type="text"
-                            value={editCourseData.deliveryType}
-                            onChange={(e) =>
-                              setEditCourseData({ ...editCourseData, deliveryType: e.target.value })
-                            }
-                            className="w-32 px-2 py-1 border rounded text-center text-sm"
                           />
                         </td>
                         <td className="p-4 border-b">
@@ -320,11 +446,21 @@ const InstructorCourses = () => {
                         <td className="p-4 border-b">
                           <input
                             type="text"
-                            value={editCourseData.purchaseDate}
+                            value={editCourseData.date}
                             onChange={(e) =>
-                              setEditCourseData({ ...editCourseData, purchaseDate: e.target.value })
+                              setEditCourseData({ ...editCourseData, date: e.target.value })
                             }
                             className="w-36 px-2 py-1 border rounded text-center text-sm"
+                          />
+                        </td>
+                        <td className="p-4 border-b">
+                          <input
+                            type="text"
+                            value={editCourseData.status}
+                            onChange={(e) =>
+                              setEditCourseData({ ...editCourseData, status: e.target.value })
+                            }
+                            className="w-16 px-2 py-1 border rounded text-center text-sm"
                           />
                         </td>
                         <td className="p-4 border-b flex items-center space-x-2">
@@ -344,23 +480,23 @@ const InstructorCourses = () => {
                       </>
                     ) : (
                       <>
-                        <td className="p-4 border-b">{purchase.no}</td>
-                        <td className="p-4 border-b">{purchase.title}</td>
-                        <td className="p-4 border-b">{purchase.vendor}</td>
-                        <td className="p-4 border-b">{purchase.category}</td>
-                        <td className="p-4 border-b">{purchase.deliveryType}</td>
-                        <td className="p-4 border-b">{purchase.price}</td>
-                        <td className="p-4 border-b">{purchase.purchaseDate}</td>
+                        <td className="p-4 border-b">{upcoming.no}</td>
+                        <td className="p-4 border-b">{upcoming.title}</td>
+                        <td className="p-4 border-b">{upcoming.thumbnail}</td>
+                        <td className="p-4 border-b">{upcoming.category}</td>
+                        <td className="p-4 border-b">{upcoming.price}</td>
+                        <td className="p-4 border-b">{upcoming.date}</td>
+                        <td className="p-4 border-b text-red-500">{upcoming.status}</td>
                         <td className="p-4 border-b flex items-center space-x-2">
                           <button
                             className="p-2 rounded-full hover:bg-gray-100"
-                            onClick={() => handleEdit(purchase)}
+                            onClick={() => handleEdit(upcoming)}
                           >
                             <FaEdit className="text-gray-500 hover:text-blue-500" />
                           </button>
                           <button
                             className="p-2 rounded-full hover:bg-gray-100"
-                            onClick={() => handleDelete(purchase.id)}
+                            onClick={() => handleDelete(upcoming.id)}
                           >
                             <FaTrashAlt className="text-gray-500 hover:text-red-500" />
                           </button>
@@ -371,269 +507,133 @@ const InstructorCourses = () => {
                 ))}
               </tbody>
             </table>
-          );
-          case "upcomingCourses":
-            return (
-              <div className="overflow-x-auto">
-                <table className="min-w-full border-collapse bg-white rounded-lg shadow">
-                  <thead className="bg-red-50 text-gray-700">
-                    <tr>
-                      <th className="text-left p-4 border-b">Item No.</th>
-                      <th className="text-left p-4 border-b">Title</th>
-                      <th className="text-left p-4 border-b">Thumbnail</th>
-                      <th className="text-left p-4 border-b">Category</th>
-                      <th className="text-left p-4 border-b">Price</th>
-                      <th className="text-left p-4 border-b">Date</th>
-                      <th className="text-left p-4 border-b">Status</th>
-                      <th className="text-left p-4 border-b">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {courses.map((upcoming) => (
-                      <tr key={upcoming.id} className="hover:bg-gray-50">
-                        {editCourseId === upcoming.id ? (
-                          <>
-                            <td className="p-4 border-b">
-                              <input
-                                type="text"
-                                value={editCourseData.no}
-                                onChange={(e) =>
-                                  setEditCourseData({ ...editCourseData, no: e.target.value })
-                                }
-                                className="w-16 px-2 py-1 border rounded text-center text-sm"
-                              />
-                            </td>
-                            <td className="p-4 border-b">
-                              <input
-                                type="text"
-                                value={editCourseData.title}
-                                onChange={(e) =>
-                                  setEditCourseData({ ...editCourseData, title: e.target.value })
-                                }
-                                className="w-36 px-2 py-1 border rounded text-center text-sm"
-                              />
-                            </td>
-                            <td className="p-4 border-b">
-                              <input
-                                type="text"
-                                value={editCourseData.thumbnail}
-                                onChange={(e) =>
-                                  setEditCourseData({ ...editCourseData, thumbnail: e.target.value })
-                                }
-                                className="w-16 px-2 py-1 border rounded text-center text-sm"
-                              />
-                            </td>
-                            <td className="p-4 border-b">
-                              <input
-                                type="text"
-                                value={editCourseData.category}
-                                onChange={(e) =>
-                                  setEditCourseData({ ...editCourseData, category: e.target.value })
-                                }
-                                className="w-36 px-2 py-1 border rounded text-center text-sm"
-                              />
-                            </td>
-                            <td className="p-4 border-b">
-                              <input
-                                type="number"
-                                value={editCourseData.price}
-                                onChange={(e) =>
-                                  setEditCourseData({ ...editCourseData, price: e.target.value })
-                                }
-                                className="w-16 px-2 py-1 border rounded text-center text-sm"
-                              />
-                            </td>
-                            <td className="p-4 border-b">
-                              <input
-                                type="text"
-                                value={editCourseData.date}
-                                onChange={(e) =>
-                                  setEditCourseData({ ...editCourseData, date: e.target.value })
-                                }
-                                className="w-36 px-2 py-1 border rounded text-center text-sm"
-                              />
-                            </td>
-                            <td className="p-4 border-b">
-                              <input
-                                type="text"
-                                value={editCourseData.status}
-                                onChange={(e) =>
-                                  setEditCourseData({ ...editCourseData, status: e.target.value })
-                                }
-                                className="w-16 px-2 py-1 border rounded text-center text-sm"
-                              />
-                            </td>
-                            <td className="p-4 border-b flex items-center space-x-2">
-                              <button
-                                className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                                onClick={saveEdit}
-                              >
-                                Save
-                              </button>
-                              <button
-                                className="p-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400"
-                                onClick={() => setEditCourseId(null)}
-                              >
-                                Cancel
-                              </button>
-                            </td>
-                          </>
-                        ) : (
-                          <>
-                            <td className="p-4 border-b">{upcoming.no}</td>
-                            <td className="p-4 border-b">{upcoming.title}</td>
-                            <td className="p-4 border-b">{upcoming.thumbnail}</td>
-                            <td className="p-4 border-b">{upcoming.category}</td>
-                            <td className="p-4 border-b">{upcoming.price}</td>
-                            <td className="p-4 border-b">{upcoming.date}</td>
-                            <td className="p-4 border-b text-red-500">{upcoming.status}</td>
-                            <td className="p-4 border-b flex items-center space-x-2">
-                              <button
-                                className="p-2 rounded-full hover:bg-gray-100"
-                                onClick={() => handleEdit(upcoming)}
-                              >
-                                <FaEdit className="text-gray-500 hover:text-blue-500" />
-                              </button>
-                              <button
-                                className="p-2 rounded-full hover:bg-gray-100"
-                                onClick={() => handleDelete(upcoming.id)}
-                              >
-                                <FaTrashAlt className="text-gray-500 hover:text-red-500" />
-                              </button>
-                            </td>
-                          </>
-                        )}
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            );
-          
-          case "discounts":
-            return (
-              <table className="min-w-full border-collapse bg-white rounded-lg shadow">
-                <thead className="bg-red-50 text-gray-700">
-                  <tr>
-                    <th className="text-left p-4 border-b">Item No.</th>
-                    <th className="text-left p-4 border-b">Course</th>
-                    <th className="text-left p-4 border-b">Start Date</th>
-                    <th className="text-left p-4 border-b">End Date</th>
-                    <th className="text-left p-4 border-b">Discount</th>
-                    <th className="text-left p-4 border-b">Status</th>
-                    <th className="text-left p-4 border-b">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {courses.map((discount) => (
-                    <tr key={discount.id} className="hover:bg-gray-50">
-                      {editCourseId === discount.id ? (
-                        <>
-                          <td className="p-4 border-b">
-                            <input
-                              type="text"
-                              value={editCourseData.no}
-                              onChange={(e) =>
-                                setEditCourseData({ ...editCourseData, no: e.target.value })
-                              }
-                              className="w-16 px-2 py-1 border rounded text-center text-sm"
-                            />
-                          </td>
-                          <td className="p-4 border-b">
-                            <input
-                              type="text"
-                              value={editCourseData.title}
-                              onChange={(e) =>
-                                setEditCourseData({ ...editCourseData, title: e.target.value })
-                              }
-                              className="w-36 px-2 py-1 border rounded text-center text-sm"
-                            />
-                          </td>
-                          <td className="p-4 border-b">
-                            <input
-                              type="text"
-                              value={editCourseData.startDate}
-                              onChange={(e) =>
-                                setEditCourseData({ ...editCourseData, startDate: e.target.value })
-                              }
-                              className="w-36 px-2 py-1 border rounded text-center text-sm"
-                            />
-                          </td>
-                          <td className="p-4 border-b">
-                            <input
-                              type="text"
-                              value={editCourseData.endDate}
-                              onChange={(e) =>
-                                setEditCourseData({ ...editCourseData, endDate: e.target.value })
-                              }
-                              className="w-36 px-2 py-1 border rounded text-center text-sm"
-                            />
-                          </td>
-                          <td className="p-4 border-b">
-                            <input
-                              type="number"
-                              value={editCourseData.discount}
-                              onChange={(e) =>
-                                setEditCourseData({ ...editCourseData, discount: e.target.value })
-                              }
-                              className="w-16 px-2 py-1 border rounded text-center text-sm"
-                            />
-                          </td>
-                          <td className="p-4 border-b">
-                            <input
-                              type="text"
-                              value={editCourseData.status}
-                              onChange={(e) =>
-                                setEditCourseData({ ...editCourseData, status: e.target.value })
-                              }
-                              className="w-16 px-2 py-1 border rounded text-center text-sm"
-                            />
-                          </td>
-                          <td className="p-4 border-b flex items-center space-x-2">
-                            <button
-                              className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                              onClick={saveEdit}
-                            >
-                              Save
-                            </button>
-                            <button
-                              className="p-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400"
-                              onClick={() => setEditCourseId(null)}
-                            >
-                              Cancel
-                            </button>
-                          </td>
-                        </>
-                      ) : (
-                        <>
-                          <td className="p-4 border-b">{discount.no}</td>
-                          <td className="p-4 border-b">{discount.title}</td>
-                          <td className="p-4 border-b">{discount.startDate}</td>
-                          <td className="p-4 border-b">{discount.endDate}</td>
-                          <td className="p-4 border-b">{discount.discount}%</td>
-                          <td className="p-4 border-b">{discount.status}</td>
-                          <td className="p-4 border-b flex items-center space-x-2">
-                            <button
-                              className="p-2 rounded-full hover:bg-gray-100"
-                              onClick={() => handleEdit(discount)}
-                            >
-                              <FaEdit className="text-gray-500 hover:text-blue-500" />
-                            </button>
-                            <button
-                              className="p-2 rounded-full hover:bg-gray-100"
-                              onClick={() => handleDelete(discount.id)}
-                            >
-                              <FaTrashAlt className="text-gray-500 hover:text-red-500" />
-                            </button>
-                          </td>
-                        </>
-                      )}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            );
-          
+          </div>
+        );
+
+      case "discounts":
+        return (
+          <table className="min-w-full border-collapse bg-white rounded-lg shadow">
+            <thead className="bg-red-50 text-gray-700">
+              <tr>
+                <th className="text-left p-4 border-b">Item No.</th>
+                <th className="text-left p-4 border-b">Course</th>
+                <th className="text-left p-4 border-b">Start Date</th>
+                <th className="text-left p-4 border-b">End Date</th>
+                <th className="text-left p-4 border-b">Discount</th>
+                <th className="text-left p-4 border-b">Status</th>
+                <th className="text-left p-4 border-b">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {courses.map((discount) => (
+                <tr key={discount.id} className="hover:bg-gray-50">
+                  {editCourseId === discount.id ? (
+                    <>
+                      <td className="p-4 border-b">
+                        <input
+                          type="text"
+                          value={editCourseData.no}
+                          onChange={(e) =>
+                            setEditCourseData({ ...editCourseData, no: e.target.value })
+                          }
+                          className="w-16 px-2 py-1 border rounded text-center text-sm"
+                        />
+                      </td>
+                      <td className="p-4 border-b">
+                        <input
+                          type="text"
+                          value={editCourseData.title}
+                          onChange={(e) =>
+                            setEditCourseData({ ...editCourseData, title: e.target.value })
+                          }
+                          className="w-36 px-2 py-1 border rounded text-center text-sm"
+                        />
+                      </td>
+                      <td className="p-4 border-b">
+                        <input
+                          type="text"
+                          value={editCourseData.startDate}
+                          onChange={(e) =>
+                            setEditCourseData({ ...editCourseData, startDate: e.target.value })
+                          }
+                          className="w-36 px-2 py-1 border rounded text-center text-sm"
+                        />
+                      </td>
+                      <td className="p-4 border-b">
+                        <input
+                          type="text"
+                          value={editCourseData.endDate}
+                          onChange={(e) =>
+                            setEditCourseData({ ...editCourseData, endDate: e.target.value })
+                          }
+                          className="w-36 px-2 py-1 border rounded text-center text-sm"
+                        />
+                      </td>
+                      <td className="p-4 border-b">
+                        <input
+                          type="number"
+                          value={editCourseData.discount}
+                          onChange={(e) =>
+                            setEditCourseData({ ...editCourseData, discount: e.target.value })
+                          }
+                          className="w-16 px-2 py-1 border rounded text-center text-sm"
+                        />
+                      </td>
+                      <td className="p-4 border-b">
+                        <input
+                          type="text"
+                          value={editCourseData.status}
+                          onChange={(e) =>
+                            setEditCourseData({ ...editCourseData, status: e.target.value })
+                          }
+                          className="w-16 px-2 py-1 border rounded text-center text-sm"
+                        />
+                      </td>
+                      <td className="p-4 border-b flex items-center space-x-2">
+                        <button
+                          className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                          onClick={saveEdit}
+                        >
+                          Save
+                        </button>
+                        <button
+                          className="p-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400"
+                          onClick={() => setEditCourseId(null)}
+                        >
+                          Cancel
+                        </button>
+                      </td>
+                    </>
+                  ) : (
+                    <>
+                      <td className="p-4 border-b">{discount.no}</td>
+                      <td className="p-4 border-b">{discount.title}</td>
+                      <td className="p-4 border-b">{discount.startDate}</td>
+                      <td className="p-4 border-b">{discount.endDate}</td>
+                      <td className="p-4 border-b">{discount.discount}%</td>
+                      <td className="p-4 border-b">{discount.status}</td>
+                      <td className="p-4 border-b flex items-center space-x-2">
+                        <button
+                          className="p-2 rounded-full hover:bg-gray-100"
+                          onClick={() => handleEdit(discount)}
+                        >
+                          <FaEdit className="text-gray-500 hover:text-blue-500" />
+                        </button>
+                        <button
+                          className="p-2 rounded-full hover:bg-gray-100"
+                          onClick={() => handleDelete(discount.id)}
+                        >
+                          <FaTrashAlt className="text-gray-500 hover:text-red-500" />
+                        </button>
+                      </td>
+                    </>
+                  )}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        );
+
 
       case "promotions":
         return (
@@ -662,7 +662,18 @@ const InstructorCourses = () => {
 
   return (
     <div className="container mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4">Courses Dashboard</h1>
+      <div className="flex items-center mb-6">
+        <FaFileAlt className="text-gray-700 text-2xl mr-2" />
+        <h1 className="text-2xl font-bold">Courses</h1>
+      </div>
+      <div className="bg-white p-6 rounded-lg shadow mb-8 flex items-center justify-between">
+        <div className="text-xl font-semibold text-gray-700 flex items-center">
+          <FaFileAlt className="text-gray-700 mr-2" /> Jump Into Course Creation
+        </div>
+        <button className="bg-red-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-red-600">
+          Create Your Course
+        </button>
+      </div>
       <div className="flex justify-between mb-6 bg-gray-50 shadow-md rounded-lg">
         {tabs.map((tab) => (
           <button

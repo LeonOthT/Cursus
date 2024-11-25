@@ -15,7 +15,7 @@ const LiveStreams = () => {
     { name: "Eli Natoli", avatar: "https://media.istockphoto.com/id/1169683248/vi/vec-to/bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-avatar-t%C3%A0i-kho%E1%BA%A3n-ng%C6%B0%E1%BB%9Di-d%C3%B9ng-ph%C6%B0%C6%A1ng-ti%E1%BB%87n-truy%E1%BB%81n-th%C3%B4ng-x%C3%A3-h%E1%BB%99i.jpg?s=612x612&w=0&k=20&c=nvc1CkipEPblstmM5uM9tQOvHo7EWvaHLn4VW1cgs2w=" },
     { name: "Jaysen Batchelor", avatar: "https://media.istockphoto.com/id/1169683307/vi/vec-to/bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-avatar-t%C3%A0i-kho%E1%BA%A3n-ng%C6%B0%E1%BB%9Di-d%C3%B9ng-ph%C6%B0%C6%A1ng-ti%E1%BB%87n-truy%E1%BB%81n-th%C3%B4ng-x%C3%A3-h%E1%BB%99i.jpg?s=612x612&w=0&k=20&c=2xsEmtL1gwR6xFJnRZAdeVXMcmr4DRBsXf1KYKYn4Ys=" }
   ];
-  
+
 
   return (
     <div className="flex">
@@ -46,20 +46,11 @@ const LiveStreams = () => {
         <div className="flex flex-col items-center">
           {/* Icon */}
           <div className="bg-pink-100 p-4 rounded-full mb-4">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-12 w-12 text-gray-700"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M9 12l2 2 4-4m0 0l-2-2m2 2H9m5 2l-2-2m0 0H9"
-              />
-            </svg>
+            <img
+              src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS-q7KwwSCOQhNBvYi2Zra-rI174SrUvH7enJB_MUKqtF3kzUWF"
+              alt="Live Streaming Icon"
+              className="h-12 w-12"
+            />
           </div>
           {/* Content */}
           <p className="text-gray-600 text-center mb-4">

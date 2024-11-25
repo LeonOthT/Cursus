@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FaEdit, FaTrashAlt, FaDownload, FaPrint } from "react-icons/fa";
+import { FaEdit, FaTrashAlt, FaDownload, FaPrint, FaFileAlt } from "react-icons/fa";
 
 const StudentPurchasedCourses = () => {
   const [purchases, setPurchases] = useState([]);
@@ -76,7 +76,10 @@ const StudentPurchasedCourses = () => {
 
   return (
     <div className="container mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4">Purchased Courses</h1>
+     <div className="flex items-center mb-6">
+        <FaFileAlt className="text-gray-700 text-2xl mr-2" />
+        <h1 className="text-2xl font-bold">Purchased Courses</h1>
+      </div>
       {loading ? (
         <p>Loading...</p>
       ) : (
