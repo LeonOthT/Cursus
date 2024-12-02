@@ -20,7 +20,19 @@ function Homepage() {
     <div className="homepage flex p-8">
       {/* Main Content */}
       <div className="flex-grow pr-8">
-        <h1 className="text-2xl font-bold text-gray-800 mb-6 flex justify-between items-center">Live Streams</h1>
+        <h1 className="text-2xl font-bold text-gray-800 mb-6 flex justify-between items-center">Live Streams
+          <a
+            href="#"
+            className="text-geay-100 hover:underline text-base font-semibold"
+            onClick={(e) => {
+              e.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ <a>
+              navigate("/live-streams"); // Điều hướng đến '/live-streams'
+            }}
+          >
+            See all
+          </a>
+        </h1>
+
         <div className="grid grid-cols-6 gap-4 mb-8">
           {/* Live stream thumbnails */}
           {[
@@ -452,28 +464,28 @@ function Homepage() {
 
         {/* Live Streaming Section */}
         <div className="w-70 bg-white p-6 shadow-md">
-        <h2 className="text-xl font-semibold mb-6">Live Streaming</h2>
-        <div className="flex flex-col items-center">
-          {/* Icon */}
-          <div className="bg-pink-100 p-4 rounded-full mb-4">
-            <img
-              src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS-q7KwwSCOQhNBvYi2Zra-rI174SrUvH7enJB_MUKqtF3kzUWF"
-              alt="Live Streaming Icon"
-              className="h-12 w-12"
-            />
+          <h2 className="text-xl font-semibold mb-6">Live Streaming</h2>
+          <div className="flex flex-col items-center">
+            {/* Icon */}
+            <div className="bg-pink-100 p-4 rounded-full mb-4">
+              <img
+                src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS-q7KwwSCOQhNBvYi2Zra-rI174SrUvH7enJB_MUKqtF3kzUWF"
+                alt="Live Streaming Icon"
+                className="h-12 w-12"
+              />
+            </div>
+            {/* Content */}
+            <p className="text-gray-600 text-center mb-4">
+              Set up your channel and stream live to your students
+            </p>
+            <button className="bg-red-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-red-600">
+              Get Started
+            </button>
+            <p className="text-sm text-gray-500 text-center mt-2">
+              Info: This feature is only for "Instructors".
+            </p>
           </div>
-          {/* Content */}
-          <p className="text-gray-600 text-center mb-4">
-            Set up your channel and stream live to your students
-          </p>
-          <button className="bg-red-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-red-600">
-            Get Started
-          </button>
-          <p className="text-sm text-gray-500 text-center mt-2">
-            Info: This feature is only for "Instructors".
-          </p>
         </div>
-      </div>
         {/* Top Categories Section */}
         <div className="bg-white rounded-lg shadow p-6 mt-8">
           <h2 className="text-lg font-semibold mb-4">Top Categories</h2>

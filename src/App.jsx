@@ -10,6 +10,9 @@ import TopNav from './components/TopNav';
 import LiveStreams from './pages/Homepage/LiveStreams';
 import InstructorCourses from './pages/Instructor/Courses';
 import StudentPurchasedCourses from './pages/Student/PurchasedCourses';
+import ExplorePage from './pages/Homepage/Explore';
+import Analytics from './pages/Instructor/Analytics';
+import InstructorAnalytics from './pages/Instructor/Analytics';
 
 function MainLayout({ children, sidebar }) {
   return (
@@ -49,6 +52,14 @@ function App() {
           </MainLayout>
         }
       />
+      <Route
+        path="/explore"
+        element={
+          <MainLayout sidebar={<HomepageSidebar />}>
+            <ExplorePage />
+          </MainLayout>
+        }
+      />
 
       {/* Unified Dashboard for All Roles */}
       <Route
@@ -65,6 +76,15 @@ function App() {
         element={
           <MainLayout sidebar={<Sidebar role="instructor" />}>
             <InstructorCourses />
+          </MainLayout>
+        }
+      />
+
+<Route
+        path="/instructor/analytics"
+        element={
+          <MainLayout sidebar={<Sidebar role="instructor" />}>
+            <InstructorAnalytics />
           </MainLayout>
         }
       />
