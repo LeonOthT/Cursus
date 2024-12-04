@@ -140,26 +140,20 @@ const InstructorAnalytics = () => {
 
   const barOptions = {
     plugins: {
-      tooltip: {
-        callbacks: {
-          label: (context) => `Subscribe: ${context.raw}`,
-        },
+      legend: {
+        display: false, // Ẩn chú thích (legend)
+      },
+    },
+    scales: {
+      x: {
+        display: false, // Ẩn trục X
+      },
+      y: {
+        display: false, // Ẩn trục Y
       },
     },
     responsive: true,
-    scales: {
-      x: {
-        grid: {
-          display: false,
-        },
-      },
-      y: {
-        beginAtZero: true,
-        grid: {
-          color: "#e5e7eb", // Màu nhạt cho đường kẻ
-        },
-      },
-    },
+    maintainAspectRatio: false,
   };
 
   return (
@@ -169,15 +163,14 @@ const InstructorAnalytics = () => {
 
       {/* Khu vực tóm tắt */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        {/* Subscribers */}
-        <div className="bg-white shadow-lg rounded-lg p-6">
+         {/* Subscribers */}
+         <div className="bg-white shadow-lg rounded-lg p-6">
           <h2 className="text-lg font-bold mb-2">Subscribers</h2>
           <p className="text-xl font-bold text-gray-900">839</p>
           <div className="mt-4">
             <Bar data={subscribersData} options={barOptions} />
           </div>
         </div>
-
        
 
         {/* Weekly Sales */}
