@@ -33,10 +33,23 @@ const InstructorAnalytics = () => {
     labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
     datasets: [
       {
-        label: "Visitors",
-        data: [150, 200, 180, 220, 300, 250, 200],
-        borderColor: "orange",
+        label: "New",
+        data: [0, 2, 4.3, 8, 5, 1.8, 2.2],
+        borderColor: "red",
+        borderWidth: 2,
         tension: 0.4,
+        fill: false,
+        pointBackgroundColor: "red",
+      },
+      {
+        label: "Old",
+        data: [0, 4, 3, 5, 3, 7, 0],
+        borderColor: "orange",
+        borderWidth: 2,
+        borderDash: [5, 5],
+        tension: 0.4,
+        fill: false,
+        pointBackgroundColor: "orange",
       },
     ],
   };
@@ -163,15 +176,46 @@ const InstructorAnalytics = () => {
 
       {/* Khu vực tóm tắt */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-         {/* Subscribers */}
-         <div className="bg-white shadow-lg rounded-lg p-6">
+        {/* Subscribers */}
+        <div className="bg-white shadow-lg rounded-lg p-6">
           <h2 className="text-lg font-bold mb-2">Subscribers</h2>
           <p className="text-xl font-bold text-gray-900">839</p>
           <div className="mt-4">
             <Bar data={subscribersData} options={barOptions} />
           </div>
         </div>
-       
+
+
+
+
+        {/* Weekly Visitors */}
+        <div className="bg-white shadow-lg rounded-lg p-6">
+          <h2 className="text-lg font-bold mb-2">Weekly Visitors</h2>
+          <p className="text-xl font-bold text-gray-900">950</p>
+          <div className="mt-4">
+            <Line
+              data={weeklyVisitorsData}
+              options={{
+                plugins: {
+                  legend: {
+                    display: true, // Hiển thị chú thích
+                    position: "top",
+                  },
+                },
+                scales: {
+                  x: {
+                    display: false, // Ẩn trục X
+                  },
+                  y: {
+                    display: false, // Ẩn trục Y
+                  },
+                },
+                responsive: true,
+                maintainAspectRatio: false,
+              }}
+            />
+          </div>
+        </div>
 
         {/* Weekly Sales */}
         <div className="bg-white shadow-lg rounded-lg p-6">
@@ -194,18 +238,11 @@ const InstructorAnalytics = () => {
             />
           </div>
 
-          
-        </div>
 
-         {/* Weekly Visitors */}
-         <div className="bg-white shadow-lg rounded-lg p-6">
-          <h2 className="text-lg font-bold mb-2">Weekly Visitors</h2>
-          <p className="text-xl font-bold text-gray-900">950</p>
-          <div className="mt-4">
-            <Line data={weeklyVisitorsData} options={hiddenAxesOptions} />
-          </div>
         </div>
       </div>
+
+
 
       {/* Biểu đồ "Sales Of The Year"
       <div className="bg-white shadow-lg rounded-lg p-6">
@@ -219,14 +256,14 @@ const InstructorAnalytics = () => {
         />
       </div> */}
 
-       {/* Biểu đồ "User Activity" */}
-       <div className="bg-white shadow-lg rounded-lg p-6">
+      {/* Biểu đồ "User Activity" */}
+      <div className="bg-white shadow-lg rounded-lg p-6">
         <h2 className="text-xl font-bold mb-4">User Activity</h2>
         <Line data={userActivityData} options={userActivityOptions} />
       </div>
 
-       {/* Bảng danh sách khóa học */}
-       <div className="bg-white shadow-lg rounded-lg p-6">
+      {/* Bảng danh sách khóa học */}
+      <div className="bg-white shadow-lg rounded-lg p-6">
         <h2 className="text-xl font-bold mb-4">Courses Overview</h2>
         <table className="w-full text-left border-collapse">
           <thead>
