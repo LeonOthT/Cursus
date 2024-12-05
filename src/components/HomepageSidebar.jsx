@@ -17,6 +17,8 @@ import {
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
+
+
 const HomepageSidebar = () => {
   const [isOpen, setIsOpen] = useState(true);
 
@@ -43,7 +45,7 @@ const HomepageSidebar = () => {
       <button onClick={() => setIsOpen(!isOpen)} className="p-4 w-16 h-16 bg-red-500">
         <FaBars className="text-xl text-white" />
       </button>
-
+            {/* Sidebar Content */}
       <div className="flex flex-col">
         {/* Top Sidebar Items */}
         <div className="flex flex-col space-y-1 px-4 mt-2">
